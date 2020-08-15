@@ -1,0 +1,29 @@
+<script>
+    const url = 'http://jsonplaceholder.typicode.com/users'
+    const dctAxios = {
+        get: function(url){
+            return new Promise(function(resolve, reject){
+                const xhr = new XMLHttpRequest()
+                xhr.open('GET', url)
+                xhr.send()
+                xhr.onload = function(){
+                    resolve(JSON.parse(xhr.responseText))
+                }
+                xhr.onerror = function(){
+                    reject(xhr.responseText)
+                }
+            })
+        }
+    }
+
+    dctAxios.get(url)
+        .then((data) => {
+            console.log(data)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+
+
+    dctAxios.post(url, formData)
+</script>
